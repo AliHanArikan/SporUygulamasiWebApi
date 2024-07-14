@@ -1,4 +1,6 @@
 ﻿using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,29 +11,41 @@ namespace DataAccessLayer.Repositories
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        public Task<TEntity> AddAsync(TEntity entity)
+        Context context = new Context();
+        private readonly DbSet<TEntity> _dbSet;
+
+        public Repository()
         {
-            throw new NotImplementedException();
+            
+            _dbSet = context.Set<TEntity>();
+
+        }
+        public async Task AddAsync(TEntity entity)
+        {
+            await _dbSet.AddAsync(entity);
+            await context.SaveChangesAsync();
         }
 
-        public Task<TEntity> DeleteAsync(TEntity entity)
+        public async Task DeleteAsync(TEntity entity)
         {
-            throw new NotImplementedException();
+            _dbSet.Remove(entity);
+            await context.SaveChangesAsync();
         }
 
-        public Task<IEnumerable<TEntity>> GetAllAsync()
+        public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
-            throw new NotImplementedException();
+           return await _dbSet.AsNoTracking().ToListAsync();
         }
 
-        public Task<TEntity> GetByIdAsync(int id)
+        public async Task<TEntity> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _dbSet.FindAsync(id);
         }
 
-        public Task<TEntity> UpdateAsync(TEntity entity)
+        public async Task UpdateAsync(TEntity entity)
         {
-            throw new NotImplementedException();
+            context.Entry(entity).State = EntityState.Modified;
+            await context.SaveChangesAsync();
         }
     }
 }

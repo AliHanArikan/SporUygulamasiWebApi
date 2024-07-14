@@ -12,10 +12,10 @@ namespace DataAccessLayer.Abstract
 
         Task<TEntity> GetByIdAsync(int id);
 
-        Task<TEntity> AddAsync(TEntity entity);
+        Task AddAsync(TEntity entity);
 
-        Task<TEntity> UpdateAsync(TEntity entity);
+        Task UpdateAsync(TEntity entity);
 
-        Task<TEntity> DeleteAsync(TEntity entity);
+        Task DeleteAsync(TEntity entity);
     }
 }
