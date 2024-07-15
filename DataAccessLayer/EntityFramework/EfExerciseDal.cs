@@ -1,4 +1,5 @@
 ﻿using DataAccessLayer.Abstract;
+using DataAccessLayer.Repositories;
 using EntityLayer.Entities;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.EntityFramework
 {
-    public interface IExerciseDal : IRepository<Exercise>
+    public class EfExerciseDal : Repository<Exercise> , IExerciseDal
     {
 
     }

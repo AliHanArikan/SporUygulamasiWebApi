@@ -12,9 +12,11 @@ namespace DataAccessLayer.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-        }
+          }
 
         public DbSet<Exercise> Exercises { get; set; }
+
+        public DbSet<ReadyTrainingInform> ReadyTrainingInforms { get; set; }
 
     }
 }

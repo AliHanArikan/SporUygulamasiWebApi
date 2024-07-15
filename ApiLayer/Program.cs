@@ -1,4 +1,8 @@
+using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
+using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +14,13 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<Context>();
+
+builder.Services.AddScoped<IExerciseService,ExerciseManager>();
+builder.Services.AddScoped<IExerciseDal,EfExerciseDal>();
+
+builder.Services.AddScoped<IReadyTrainingInformService,ReadyTrainingInformManager>();
+builder.Services.AddScoped<IReadyTrainingInformDal,EfReadyTrainingInformDal>();
+
 
 var app = builder.Build();
 
