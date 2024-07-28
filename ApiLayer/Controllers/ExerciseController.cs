@@ -13,10 +13,7 @@ namespace ApiLayer.Controllers
             _exerciseService = exerciseService;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+        
 
         [HttpGet("GetAllAsync")]
         public async Task<IActionResult> GetAllAsync() 

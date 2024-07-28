@@ -21,6 +21,9 @@ builder.Services.AddScoped<IExerciseDal,EfExerciseDal>();
 builder.Services.AddScoped<IReadyTrainingInformService,ReadyTrainingInformManager>();
 builder.Services.AddScoped<IReadyTrainingInformDal,EfReadyTrainingInformDal>();
 
+builder.Services.AddScoped<IReadyTrainingService, ReadyTrainingManager>();
+builder.Services.AddScoped<IReadyTrainingDal, EfReadyTrainingDal>();
+
 
 var app = builder.Build();
 

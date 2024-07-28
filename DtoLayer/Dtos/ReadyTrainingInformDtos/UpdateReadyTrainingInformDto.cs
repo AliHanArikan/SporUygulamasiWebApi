@@ -10,7 +10,8 @@ namespace DtoLayer.Dtos.ReadyTrainingInformDtos
     {
         public int ReadyTrainingInformId { get; set; }
 
+        public string ReadyTrainingInformName { get; set; }
         public int TotalTime { get; set; }
-        public int BodyPart { get; set; }
+        public string BodyPart { get; set; }
     }
 }

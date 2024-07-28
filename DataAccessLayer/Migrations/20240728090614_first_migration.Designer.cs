@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20240715091101_readyTrainingAdded")]
-    partial class readyTrainingAdded
+    [Migration("20240728090614_first_migration")]
+    partial class first_migration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -53,6 +53,58 @@ namespace DataAccessLayer.Migrations
                     b.ToTable("Exercises");
                 });
 
+            modelBuilder.Entity("EntityLayer.Entities.ReadyTraining", b =>
+                {
+                    b.Property<int>("ReadyTrainingId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReadyTrainingId"), 1L, 1);
+
+                    b.Property<int>("Exercise1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Exercise10")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Exercise11")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Exercise12")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Exercise2")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Exercise3")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Exercise4")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Exercise5")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Exercise6")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Exercise7")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Exercise8")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Exercise9")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ReadyTrainingInformId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ReadyTrainingId");
+
+                    b.ToTable("ReadyTrainings");
+                });
+
             modelBuilder.Entity("EntityLayer.Entities.ReadyTrainingInform", b =>
                 {
                     b.Property<int>("ReadyTrainingInformId")
@@ -61,8 +113,16 @@ namespace DataAccessLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReadyTrainingInformId"), 1L, 1);
 
-                    b.Property<int>("BodyPart")
+                    b.Property<string>("BodyPart")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ReadyTrainingId")
                         .HasColumnType("int");
+
+                    b.Property<string>("ReadyTrainingInformName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TotalTime")
                         .HasColumnType("int");
